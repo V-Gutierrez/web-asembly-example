@@ -3,4 +3,6 @@
   local.get $num1
   )
   (export "helloWorld" (func $helloWorld))
+
+  ;;Wasm comment
 )
