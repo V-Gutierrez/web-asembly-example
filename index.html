@@ -26,14 +26,35 @@
       console.log(`Module minusOne ${minusOne(10)} when passed 10`)
       console.log(`Module add ${add(1, 2)} when passed 1 and 2`)
       document.write("See console")
+      document.write('<br/>')
+
       //console.log(`Module minusOne ${minusOne(44)} when passed 42`) //Should break due to abort function
 
       document.write('--- Fizzbuzz:', fizzBuzz(3))
+      document.write('<br/>')
       //Returns a pointer to the location where the string was stored
 
 
       //Now new methods are available in the instance because we are using the ASLoader
       document.write('--- Fizzbuzz:', __getString(fizzBuzz(3)))
+      document.write('<br/>')
+
+      /* Memory */
+      const { readMemory, memory } = exports
+
+      const memoryArray = new Uint8Array(memory.buffer)
+
+      console.log(memory.buffer, memory.byteLength, '-', memoryArray)
+
+
+      document.write('--- Reading from Memory:', readMemory(0))
+      document.write('--- ', readMemory(1))
+
+
+
+
+      /* Memory */
+
 
     })
     /* My Loader */

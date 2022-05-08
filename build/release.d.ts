@@ -17,3 +17,9 @@ export declare function minusOne(n: number): number;
  * @returns `~lib/string/String | null`
  */
 export declare function fizzBuzz(n: number): string | null;
+/**
+ * assembly/index/readMemory
+ * @param address `i32`
+ * @returns `i32`
+ */
+export declare function readMemory(address: number): number;

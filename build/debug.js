@@ -41,7 +41,8 @@ async function instantiate(module, imports = {}) {
 export const {
   add,
   minusOne,
-  fizzBuzz
+  fizzBuzz,
+  readMemory
 } = await (async url => instantiate(
   await (
     globalThis.fetch && globalThis.WebAssembly.compileStreaming

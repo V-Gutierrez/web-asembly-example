@@ -29,3 +29,11 @@ export function fizzBuzz(n: i32): String | null {
     return null
   }
 }
+
+memory.grow(2)
+store<u8>(0, 21)
+store<u8>(1, 99)
+
+export function readMemory(address: i32): i32 {
+  return load<u8>(address)
+}
