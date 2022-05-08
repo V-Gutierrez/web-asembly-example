@@ -6,10 +6,41 @@
 </head>
 
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/@assemblyscript/loader/umd/index.js"></script>
+  <!-- AssemblyScript Loader -->
+
+  <script src="./js/loader.js"></script>
+
   <script type="module" defer>
-    import { add, minusOne } from "./build/release.js"
-    document.body.innerText = 'addFunction:' + add(1, 2)
-    document.body.innerText += 'minusFunction:' + minusOne(2);
+    //import { add, minusOne } from "./build/release.js" //AS Loader
+
+    /* My Loader */
+    const WASM = new WASMLoader()
+
+    WASM.wasm('./build/release.wasm').then((instance) => {
+      console.log("🚀 ~ file: index.html ~ line 21 ~ WASM.wasm ~ instance", instance)
+
+      const { exports } = instance
+
+      const { add, minusOne, fizzBuzz, __getString } = exports
+      console.log(`Module minusOne ${minusOne(10)} when passed 10`)
+      console.log(`Module add ${add(1, 2)} when passed 1 and 2`)
+      document.write("See console")
+      //console.log(`Module minusOne ${minusOne(44)} when passed 42`) //Should break due to abort function
+
+      document.write('--- Fizzbuzz:', fizzBuzz(3))
+      //Returns a pointer to the location where the string was stored
+
+
+      //Now new methods are available in the instance because we are using the ASLoader
+      document.write('--- Fizzbuzz:', __getString(fizzBuzz(3)))
+
+    })
+    /* My Loader */
+
+
+    /* document.body.innerText = 'addFunction:' + add(1, 2)
+    document.body.innerText += 'minusFunction:' + minusOne(2); */
   </script>
 </body>
 
